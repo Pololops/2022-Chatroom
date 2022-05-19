@@ -1,0 +1,16 @@
+.messages {
+  margin: 1rem 0 3rem 0;
+
+  &__content {
+    margin: 1.5rem 0;
+
+    &__name {
+      padding: .5rem 0;
+    }
+
+    &__text {
+      padding: 1rem;
+      border: 1px solid lightgray;
+    }
+  }
+}
