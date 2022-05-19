@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { useRef, useEffect } from 'react';
 
 export default function Input({ inputValue, onChange }) {
+  // Création d'un autofocus sur le champs de texte au chargement du composant
   const inputRef = useRef();
   useEffect(() => {
     inputRef.current.focus();
