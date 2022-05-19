@@ -1,11 +1,11 @@
 .chat-form {
   display: flex;
-  
+
   &__input,
   &__button {
     border: 0;
+    margin: 0;
     font-size: 1.1em;
-    //background-color: var(--input-bg-color);
   }
 
   &__input {
@@ -15,6 +15,11 @@
   }
 
   &__button {
-    width: 3.5rem;
+    font-family: "icomoon";
+    color: var(--primary-color);
+    font-size: 3rem;
+    min-width: 3.5rem;
+    font-weight: normal;
+    background-color: white;
   }
 }

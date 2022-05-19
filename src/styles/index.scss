@@ -6,6 +6,11 @@
   src: url("src/assets/fonts/Roboto-Regular.ttf");
 }
 
+@font-face {
+  font-family: 'icomoon';
+  src:  url("src/assets/fonts/icomoon.ttf");
+}
+
 body {
   font-family: "Roboto", sans-serif;
   background-color: var(--primary-color);
