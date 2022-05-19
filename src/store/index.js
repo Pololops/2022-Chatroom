@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
-import reducer from '../reducer';
+import reducer from '../reducers';
 
 // ? Le store est le gardien du state dans Redux, un objet qui contient 5 méthodes, dont :
 // * getState() : permet de récupérer le state

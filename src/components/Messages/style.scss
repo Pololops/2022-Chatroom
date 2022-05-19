@@ -10,7 +10,6 @@
     &__surname {
       color: #111;
       font-weight: bold;
-      margin-inline: 2rem;
       padding: 0.5rem 0;
     }
 
@@ -18,7 +17,7 @@
       position: relative;
       color: var(--message-text-color);
       margin-top: 0.8rem;
-      padding: 1rem 1.5rem;
+      padding: .8rem 1.4rem;
       border-radius: 2em;
       background-color: var(--message-bg-color);
       background: var(--message-bg-gradient);
@@ -30,13 +29,13 @@
       position: absolute;
       display: block;
       top: -1em;
-      left: 2em;
+      left: 1.5em;
       width: 0;
       height: 0;
-      border-right-color: var(--message-bg-color);
       border-top-color: var(--alt-color);
+      border-left-color: var(--message-bg-color);
       border-style: solid;
-      border-width: 1rem 1rem 0 0;
+      border-width: 1rem 0 0 1rem;
       background-color: var(--message-bg-color);
     }
   }
