@@ -22,8 +22,10 @@ export default function Form() {
 
   const handleFormSubmit = () => (event) => {
     event.preventDefault();
-    dispatch(submitForm('Super Chat', inputText));
-    dispatch(changeInputText(''));
+    if (inputText !== '') {
+      dispatch(submitForm('Super Chat', inputText));
+      dispatch(changeInputText(''));
+    }
   };
 
   return (

@@ -1,15 +1,17 @@
 .messages {
-  margin: 1rem 1.5rem 3rem 1.5rem;
   flex-grow: 1;
+  overflow-y: auto;
 
   &__message {
-    margin: 1.5rem 0;
+    transition: all .5s;
+    margin: 1rem 1.5rem;
+    opacity: 1;
 
     &__surname {
       color: #111;
       font-weight: bold;
       margin-inline: 2rem;
-      padding: .5rem 0;
+      padding: 0.5rem 0;
     }
 
     &__content {
@@ -24,9 +26,9 @@
     }
 
     &__content::before {
-      content: ' ';
+      content: " ";
       position: absolute;
-	    display: block;
+      display: block;
       top: -1em;
       left: 2em;
       width: 0;
@@ -38,4 +40,21 @@
       background-color: var(--message-bg-color);
     }
   }
+
+  &__message:first-child {
+    animation-name: fadeIn;
+    animation-duration: 0.5s;
+  }
 }
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    max-height: 0;
+  }
+  100% {
+    opacity: 1;
+    max-height: 100%;
+  }
+}
+
