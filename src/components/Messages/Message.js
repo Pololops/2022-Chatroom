@@ -1,18 +1,15 @@
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
-export default function Message({ props }) {
+export default function Message({ surname, content }) {
   return (
-    <div className="messages__content">
-      <div className="messages__content__name">Super Chat</div>
-      <div className="messages__content__text">Salut ça va ?</div>
+    <div className="messages__message">
+      <div className="messages__message__surname">{surname}</div>
+      <div className="messages__message__content">{content}</div>
     </div>
   );
 }
 
-// Message.defaultProps = {
-// 	props: '',
-// };
-
-// Message.propTypes = {
-// 	props: PropTypes.number|string|bool|func|array|object.isRequired,
-// };
+Message.propTypes = {
+  surname: PropTypes.string.isRequired,
+  content: PropTypes.string.isRequired,
+};

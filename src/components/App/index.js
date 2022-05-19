@@ -1,15 +1,15 @@
 import './styles.scss';
 
 // Components' Imports
-import Input from '../Input';
 import Messages from '../Messages';
+import Form from '../Form';
 
 function App() {
   return (
     <div className="app">
       <h1>Chatroom</h1>
       <Messages />
-      <Input />
+      <Form />
     </div>
   );
 }
