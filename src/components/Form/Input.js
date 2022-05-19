@@ -1,9 +1,16 @@
 import PropTypes from 'prop-types';
 
+import { useRef, useEffect } from 'react';
+
 export default function Input({ inputValue, onChange }) {
-  console.log(inputValue);
+  const inputRef = useRef();
+  useEffect(() => {
+    inputRef.current.focus();
+  }, []);
+
   return (
     <input
+      ref={inputRef}
       type="input"
       className="chat-form__input"
       placeholder="Saisissez votre message…"

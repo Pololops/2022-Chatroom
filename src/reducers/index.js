@@ -31,7 +31,7 @@ const reducer = (state = initialState, action = {}) => {
       };
 
       const newMessages = [...state.messages];
-      newMessages.unshift(newMessage);
+      newMessages.push(newMessage);
 
       return {
         ...state, // reprise de tout l'ancien state
