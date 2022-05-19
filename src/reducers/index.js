@@ -1,5 +1,8 @@
-// Import des action types défini dans .actions/index.js
+// Import des action types défini dans .actions/
 import { CHANGE_INPUT_TEXT, ADD_MESSAGE } from '../actions';
+
+// Import des selectors  défini dans .selectors/
+import { getHighestId } from '../selectors';
 
 // L'état initial de l'App
 const initialState = {
@@ -21,16 +24,20 @@ const reducer = (state = initialState, action = {}) => {
     }
 
     case ADD_MESSAGE: {
+      const newMessage = {
+        id: getHighestId(state.messages) + 1,
+        author: action.author,
+        content: action.content,
+      };
+
+      const messagesWithNewMessage = [
+        ...newMessage,
+        ...state.messages,
+      ];
+
       return {
         ...state, // reprise de tout l'ancien state
-        messages: [
-          {
-            surname: action.surname,
-            content: action.content,
-
-          },
-          ...state.messages, // reprise de tout les messages
-        ],
+        messages: messagesWithNewMessage,
       };
     }
 

@@ -10,8 +10,8 @@ export default function Messages() {
   const messages = useSelector((state) => state.messages);
   return (
     <div className="messages">
-      {messages.map(({ surname, content }) => (
-        <Message key={content} surname={surname} content={content} />
+      {messages.map((message) => (
+        <Message key={message.id} {...message} />
       ))}
     </div>
   );
