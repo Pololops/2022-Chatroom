@@ -10,6 +10,10 @@
  * @returns l'id max
  */
 export function getHighestId(items) {
+  if (items.length === 0) {
+    return 0;
+  }
+
   const ids = items.map((item) => item.id);
   return Math.max(...ids);
 }

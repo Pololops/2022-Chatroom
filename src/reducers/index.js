@@ -1,12 +1,12 @@
 // Import des action types défini dans .actions/
-import { CHANGE_INPUT_TEXT, ADD_MESSAGE } from '../actions';
+import { CHANGE_INPUT_VALUE, ADD_MESSAGE } from '../actions';
 
 // Import des selectors  défini dans .selectors/
 import { getHighestId } from '../selectors';
 
 // L'état initial de l'App
 const initialState = {
-  inputText: '',
+  newMessage: '',
   messages: [],
 };
 
@@ -16,10 +16,10 @@ const initialState = {
 //* C'est donc un traducteur d'intention en modification de state
 const reducer = (state = initialState, action = {}) => {
   switch (action.type) {
-    case CHANGE_INPUT_TEXT: {
+    case CHANGE_INPUT_VALUE: {
       return {
         ...state, // reprise de tout l'ancien state
-        inputText: action.inputText,
+        newMessage: action.payload,
       };
     }
 
@@ -30,14 +30,13 @@ const reducer = (state = initialState, action = {}) => {
         content: action.content,
       };
 
-      const messagesWithNewMessage = [
-        ...newMessage,
-        ...state.messages,
-      ];
+      const newMessages = [...state.messages];
+      newMessages.unshift(newMessage);
 
       return {
         ...state, // reprise de tout l'ancien state
-        messages: messagesWithNewMessage,
+        messages: newMessages,
+        newMessage: '',
       };
     }
 
