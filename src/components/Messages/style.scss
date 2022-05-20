@@ -3,16 +3,20 @@
   overflow-y: auto;
 
   &__message:nth-last-child(2) {
-    animation: appearFromBottom 0.3s;
+    animation: appearFromBottom 0.5s;
   }
 
   &__message:nth-last-child(2) &__message__content {
     animation: rotateFromLeft 0.7s;
-  }
+    animation-timing-function: cubic-bezier(0.5, 0, 0.6, 1.7);
+}
+
 
   &__message--right:nth-last-child(2) &__message__content {
     animation: rotateFromRight 0.7s;
-  }
+    animation-timing-function: cubic-bezier(0.5, 0, 0.6, 1.7);
+}
+
 
   &__message {
     margin: 1rem 3rem 1rem 1.5rem;

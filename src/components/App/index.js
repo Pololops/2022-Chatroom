@@ -7,12 +7,14 @@ import Settings from '../Settings';
 
 function App() {
   return (
-    <div className="app">
-      <h1>Chatroom</h1>
-      <Messages />
-      <MessageForm />
+    <>
+      <div className="app">
+        <h1>Chatroom</h1>
+        <Messages />
+        <MessageForm />
+      </div>
       <Settings />
-    </div>
+    </>
   );
 }
 

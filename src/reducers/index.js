@@ -15,9 +15,12 @@ const initialState = {
   newMessage: '',
   messages: [],
   settings: {
-    isOpen: false,
+    isOpen: true,
     email: '',
     password: '',
+  },
+  user: {
+    pseudo: 'Anonyme',
   },
 };
 
@@ -31,14 +34,18 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state, // reprise de tout l'ancien state
         newMessage: action.payload,
+        settings: {
+          ...state.settings,
+          isOpen: false,
+        },
       };
     }
 
     case ADD_MESSAGE: {
       const newMessage = {
         id: getHighestId(state.messages) + 1,
-        author: action.author,
-        content: action.content,
+        author: state.user.pseudo,
+        content: state.newMessage,
       };
 
       const newMessages = [...state.messages];
@@ -76,6 +83,11 @@ const reducer = (state = initialState, action = {}) => {
         ...state, // reprise de tout l'ancien state
         user: {
           pseudo: action.payload,
+        },
+        settings: {
+          isOpen: false,
+          email: '',
+          password: '',
         },
       };
     }

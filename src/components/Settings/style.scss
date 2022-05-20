@@ -9,20 +9,12 @@
   transition-duration: 0.3s;
   transition-timing-function: cubic-bezier(0.26, 0.08, 0.16, 1.41);
 
-  &--open {
-    right: 1rem;
-    transform: translateX(0%);
-
-    .settings__toggler {
-      transform: rotate(-45deg);
-    }
-  }
-
   &__toggler {
+    position: relative;
     color: var(--primary-color);
     border-radius: 50%;
     width: 2rem;
-    height: 2rem; 
+    height: 2rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -37,6 +29,15 @@
       box-shadow: 0 1px 8px black;
       filter: brightness(1.2);
       transform: scale(1.1);
+    }
+  }
+
+  &--open {
+    right: 1rem;
+    transform: translateX(0%);
+
+    .settings__toggler {
+      transform: rotate(-45deg);
     }
   }
 
@@ -77,8 +78,12 @@
       filter: brightness(1.1);
       box-shadow: 0 1px 5px black;
 
-      &:active {
+      &:hover {
         filter: brightness(1.2);
+      }
+
+      &:active {
+        filter: brightness(0.9);
         box-shadow: 0 1px 1px black;
       }
     }

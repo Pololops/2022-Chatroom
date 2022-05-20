@@ -6,7 +6,7 @@ import { useSelector, useDispatch } from 'react-redux';
 // * Import des actions configurées dans notre implémentation de Redux
 import { changeInputValue, submitForm } from 'src/actions';
 
-import Input from './Input';
+import Input from '../Input';
 import Button from './Button';
 
 const regexForSubmitForm = /^(?!^ +$).+$/;
@@ -25,13 +25,18 @@ export default function MessageForm() {
   const handleFormSubmit = (event) => {
     event.preventDefault();
     if (newMessage.match(regexForSubmitForm)) {
-      dispatch(submitForm('Super Chat', newMessage));
+      dispatch(submitForm());
     }
   };
 
   return (
     <form className="chat-form" onSubmit={handleFormSubmit}>
-      <Input inputValue={newMessage} onChange={handleInputChange} />
+      <Input
+        className="chat-form__input"
+        placeholder="Saisissez votre message…"
+        value={newMessage}
+        onChange={handleInputChange}
+      />
       <Button />
     </form>
   );
