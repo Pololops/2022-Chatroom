@@ -1,0 +1,55 @@
+.settings {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  display: flex;
+  gap: 1.5rem;
+
+  &__button {
+    border-radius: 50%;
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 0;
+    font-size: 0.8rem;
+    font-weight: bold;
+    border: 0;
+    box-shadow: 0 1px 4px black;
+    transition: 0.4s;
+
+    &__button--clicked {
+      transform: rotate(-180deg);
+    }
+
+    &:hover {
+      background-color: var(--alt-color);
+      box-shadow: 0 1px 8px black;
+    }
+  }
+
+  &__form {
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+
+    &__email,
+    &__password,
+    &__button {
+      font-size: 0.9rem;
+      border: 0;
+      border-radius: 5px;
+      padding: 0.5rem 0.7rem;
+      box-shadow: 0 1px 4px black;
+    }
+
+     &__button {
+       color: white;
+      font-size: 1rem;
+       text-shadow: 0 -1px 0 black;
+       background: linear-gradient(180deg, var(--alt-color) 0%, var(--primary-color) 100%);
+     }
+  }
+}

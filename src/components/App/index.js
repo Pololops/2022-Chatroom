@@ -3,6 +3,7 @@ import './styles.scss';
 // Components' Imports
 import Messages from '../Messages';
 import Form from '../Form';
+import Settings from '../Settings';
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       <h1>Chatroom</h1>
       <Messages />
       <Form />
+      <Settings />
     </div>
   );
 }
