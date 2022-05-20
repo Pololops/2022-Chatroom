@@ -5,7 +5,7 @@ export default function Settings() {
   return (
     <div className="settings">
       <button type="button" className="settings__button">
-        ╳
+        +
       </button>
 
       <form className="settings__form">
