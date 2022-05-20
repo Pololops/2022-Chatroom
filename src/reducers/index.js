@@ -4,6 +4,7 @@ import {
   ADD_MESSAGE,
   TOGGLE_SETTINGS,
   CHANGE_SETTINGS_VALUE,
+  SAVE_USER,
 } from 'src/actions';
 
 // Import des selectors  défini dans .selectors/
@@ -66,6 +67,15 @@ const reducer = (state = initialState, action = {}) => {
         settings: {
           ...state.settings,
           [action.key]: action.value,
+        },
+      };
+    }
+
+    case SAVE_USER: {
+      return {
+        ...state, // reprise de tout l'ancien state
+        user: {
+          pseudo: action.payload,
         },
       };
     }
