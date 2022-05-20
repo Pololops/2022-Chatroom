@@ -1,7 +1,7 @@
 .settings {
   position: fixed;
   top: 1rem;
-  right: -250px;
+  right: calc(-250px - 0.5rem);
   display: flex;
   gap: 1.5rem;
   transition: right 0.3s ease-out;
@@ -32,6 +32,7 @@
   }
 
   &__form {
+    display: none;
     width: 250px;
     display: flex;
     flex-direction: column;
@@ -66,9 +67,6 @@
       );
       filter: brightness(1.1);
       box-shadow: 0 1px 5px black;
-
-      &:hover {
-      }
 
       &:active {
         filter: brightness(1.2);
