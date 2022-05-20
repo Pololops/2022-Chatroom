@@ -79,7 +79,6 @@ const reducer = (state = initialState, action = {}) => {
     }
 
     case SAVE_USER: {
-      console.log('je suis dans le reducer type SAVE_USER');
       return {
         ...state, // reprise de tout l'ancien state
         user: {
