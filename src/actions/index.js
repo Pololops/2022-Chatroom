@@ -7,6 +7,7 @@ export const TOGGLE_SETTINGS = 'TOGGLE_SETTINGS';
 export const CHANGE_SETTINGS_VALUE = 'CHANGE_SETTINGS_VALUE';
 export const CHANGE_PASSWORD_INPUT_VALUE = 'CHANGE_PASSWORD_INPUT_VALUE';
 export const LOGIN = 'LOGIN';
+export const SAVE_USER = 'SAVE_USER';
 
 // ? Les Action Creators :
 // * Des fonctions qui renvoie un objet avec une clé 'type' qui possède en valeur
@@ -34,4 +35,9 @@ export const changeSettingsValue = (key, value) => ({
 
 export const login = () => ({
   type: 'LOGIN',
+});
+
+export const saveUser = (pseudo) => ({
+  type: 'SAVE_USER',
+  payload: pseudo,
 });
