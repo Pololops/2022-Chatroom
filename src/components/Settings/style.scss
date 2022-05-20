@@ -5,7 +5,9 @@
   display: flex;
   gap: 1.5rem;
   transform: translateX(100%);
-  transition: 0.3s ease-in-out;
+  transition-property: transform, right;
+  transition-duration: 0.3s;
+  transition-timing-function: cubic-bezier(0.26, 0.08, 0.16, 1.41);
 
   &--open {
     right: 1rem;
@@ -28,12 +30,13 @@
     font-size: 2.2rem;
     border: 0;
     box-shadow: 0 1px 4px black;
-    transition: all 0.2s, transform 0.4s;
+    transition: all 0.2s, transform 0.2s;
 
     &:hover {
       background-color: var(--alt-color);
       box-shadow: 0 1px 8px black;
       filter: brightness(1.2);
+      transform: scale(1.1);
     }
   }
 

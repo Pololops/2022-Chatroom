@@ -3,8 +3,7 @@ import {
   CHANGE_MESSAGE_INPUT_VALUE,
   ADD_MESSAGE,
   TOGGLE_SETTINGS,
-  CHANGE_EMAIL_INPUT_VALUE,
-  CHANGE_PASSWORD_INPUT_VALUE,
+  CHANGE_SETTINGS_VALUE,
 } from 'src/actions';
 
 // Import des selectors  défini dans .selectors/
@@ -61,22 +60,12 @@ const reducer = (state = initialState, action = {}) => {
       };
     }
 
-    case CHANGE_EMAIL_INPUT_VALUE: {
+    case CHANGE_SETTINGS_VALUE: {
       return {
         ...state, // reprise de tout l'ancien state
         settings: {
           ...state.settings,
-          email: action.payload,
-        },
-      };
-    }
-
-    case CHANGE_PASSWORD_INPUT_VALUE: {
-      return {
-        ...state, // reprise de tout l'ancien state
-        settings: {
-          ...state.settings,
-          password: action.payload,
+          [action.key]: action.value,
         },
       };
     }

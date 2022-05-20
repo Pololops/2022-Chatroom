@@ -1,11 +1,7 @@
 import './style.scss';
 
 import { useSelector, useDispatch } from 'react-redux';
-import {
-  toggleSettings,
-  changeEmailInputValue,
-  changePasswordInputValue,
-} from 'src/actions';
+import { toggleSettings, changeSettingsValue, login } from 'src/actions';
 
 export default function Settings() {
   const { isOpen, email, password } = useSelector((state) => state.settings);
@@ -15,22 +11,24 @@ export default function Settings() {
     dispatch(toggleSettings());
   };
 
-  const handleEmailInputChange = (event) => {
-    dispatch(changeEmailInputValue(event.target.value));
-  };
-
-  const handlePasswordInputChange = (event) => {
-    dispatch(changePasswordInputValue(event.target.value));
+  const handleSettingsChange = (event) => {
+    dispatch(changeSettingsValue(event.target.name, event.target.value));
   };
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
+
+    // Pour se logguer on va dispatch une action
+    dispatch(login());
+
+    // const response = await axios.post('http://localhost:3001/login', {
+    //   email: 'acidman@herocorp.io',
+    //   password: 'fructis',
+    // });
   };
 
   return (
-    <div
-      className={!isOpen ? 'settings' : 'settings settings--open'}
-    >
+    <div className={!isOpen ? 'settings' : 'settings settings--open'}>
       <button
         type="button"
         className="settings__toggler"
@@ -48,7 +46,7 @@ export default function Settings() {
           className="settings__form__email"
           placeholder="Email"
           value={email}
-          onChange={handleEmailInputChange}
+          onChange={handleSettingsChange}
         />
 
         <input
@@ -59,7 +57,7 @@ export default function Settings() {
           className="settings__form__password"
           placeholder="Mot de passe"
           value={password}
-          onChange={handlePasswordInputChange}
+          onChange={handleSettingsChange}
         />
 
         <button type="submit" className="settings__form__button">
