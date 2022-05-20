@@ -1,14 +1,38 @@
 import PropTypes from 'prop-types';
 import './style.scss';
 
-export default function Settings({ isFormOpen, handleClick }) {
+import { useSelector, useDispatch } from 'react-redux';
+import { changeEmailInputValue, changePasswordInputValue } from '../../actions';
+
+export default function Settings({ isConnectFormOpen, handleFormClick }) {
+  const { email, password } = useSelector((state) => state.connectForm);
+  const dispatch = useDispatch();
+
+  const handleEmailInputChange = (event) => {
+    dispatch(changeEmailInputValue(event.target.value));
+  };
+
+  const handlePasswordInputChange = (event) => {
+    dispatch(changePasswordInputValue(event.target.value));
+  };
+
+  const handleFormSubmit = (event) => {
+    event.preventDefault();
+  };
+
   return (
-    <div className={!isFormOpen ? 'settings' : 'settings settings--open'}>
-      <button type="button" className="settings__button" onClick={handleClick}>
+    <div
+      className={!isConnectFormOpen ? 'settings' : 'settings settings--open'}
+    >
+      <button
+        type="button"
+        className="settings__button"
+        onClick={handleFormClick}
+      >
         +
       </button>
 
-      <form className="settings__form">
+      <form className="settings__form" onSubmit={handleFormSubmit}>
         <input
           type="text"
           id="email"
@@ -16,6 +40,8 @@ export default function Settings({ isFormOpen, handleClick }) {
           autoComplete="on"
           className="settings__form__email"
           placeholder="Email"
+          value={email}
+          onChange={handleEmailInputChange}
         />
 
         <input
@@ -25,6 +51,8 @@ export default function Settings({ isFormOpen, handleClick }) {
           autoComplete="on"
           className="settings__form__password"
           placeholder="Mot de passe"
+          value={password}
+          onChange={handlePasswordInputChange}
         />
 
         <button type="submit" className="settings__form__button">
@@ -35,11 +63,7 @@ export default function Settings({ isFormOpen, handleClick }) {
   );
 }
 
-Settings.defaultProps = {
-  isFormOpen: false,
-};
-
 Settings.propTypes = {
-  isFormOpen: PropTypes.bool,
-  handleClick: PropTypes.func.isRequired,
+  isConnectFormOpen: PropTypes.bool.isRequired,
+  handleFormClick: PropTypes.func.isRequired,
 };

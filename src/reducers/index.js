@@ -1,5 +1,11 @@
 // Import des action types défini dans .actions/
-import { CHANGE_INPUT_VALUE, ADD_MESSAGE } from '../actions';
+import {
+  CHANGE_MESSAGE_INPUT_VALUE,
+  ADD_MESSAGE,
+  TOGGLE_CONNECT_FORM,
+  CHANGE_EMAIL_INPUT_VALUE,
+  CHANGE_PASSWORD_INPUT_VALUE,
+} from '../actions';
 
 // Import des selectors  défini dans .selectors/
 import { getHighestId } from '../selectors';
@@ -8,6 +14,11 @@ import { getHighestId } from '../selectors';
 const initialState = {
   newMessage: '',
   messages: [],
+  isConnectFormOpen: false,
+  connectForm: {
+    email: '',
+    password: '',
+  },
 };
 
 // ? Reducer : Fonction de base de Redux pour gérer le store
@@ -16,7 +27,7 @@ const initialState = {
 //* C'est donc un traducteur d'intention en modification de state
 const reducer = (state = initialState, action = {}) => {
   switch (action.type) {
-    case CHANGE_INPUT_VALUE: {
+    case CHANGE_MESSAGE_INPUT_VALUE: {
       return {
         ...state, // reprise de tout l'ancien state
         newMessage: action.payload,
@@ -37,6 +48,33 @@ const reducer = (state = initialState, action = {}) => {
         ...state, // reprise de tout l'ancien state
         messages: newMessages,
         newMessage: '',
+      };
+    }
+
+    case TOGGLE_CONNECT_FORM: {
+      return {
+        ...state, // reprise de tout l'ancien state
+        isConnectFormOpen: action.payload,
+      };
+    }
+
+    case CHANGE_EMAIL_INPUT_VALUE: {
+      return {
+        ...state, // reprise de tout l'ancien state
+        connectForm: {
+          ...state.connectForm,
+          email: action.payload,
+        },
+      };
+    }
+
+    case CHANGE_PASSWORD_INPUT_VALUE: {
+      return {
+        ...state, // reprise de tout l'ancien state
+        connectForm: {
+          ...state.connectForm,
+          password: action.payload,
+        },
       };
     }
 

@@ -1,25 +1,30 @@
 import './styles.scss';
 
-import { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { toggleConnectForm } from '../../actions';
 
 // Components' Imports
 import Messages from '../Messages';
-import Form from '../Form';
+import MessageForm from '../MessageForm';
 import Settings from '../Settings';
 
 function App() {
-  const [isFormOpen, setIsFormOpen] = useState(false);
+  const isConnectFormOpen = useSelector((state) => state.isConnectFormOpen);
+  const dispatch = useDispatch();
 
-  const toggleForm = () => {
-    setIsFormOpen(!isFormOpen);
+  const handleFormClick = () => {
+    dispatch(toggleConnectForm(!isConnectFormOpen));
   };
 
   return (
     <div className="app">
       <h1>Chatroom</h1>
       <Messages />
-      <Form />
-      <Settings isFormOpen={isFormOpen} handleClick={toggleForm} />
+      <MessageForm />
+      <Settings
+        isConnectFormOpen={isConnectFormOpen}
+        handleFormClick={handleFormClick}
+      />
     </div>
   );
 }

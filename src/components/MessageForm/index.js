@@ -11,7 +11,7 @@ import Button from './Button';
 
 const regexForSubmitForm = /^(?!^ +$).+$/;
 
-export default function Form() {
+export default function MessageForm() {
   // ? useSelector() : un hook redux pour lire une clé du store
   const newMessage = useSelector((state) => state.newMessage);
 
