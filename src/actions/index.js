@@ -17,10 +17,8 @@ export const changeInputValue = (value) => ({
   payload: value,
 });
 
-export const submitForm = (author, content) => ({
+export const submitForm = () => ({
   type: 'ADD_MESSAGE',
-  author,
-  content,
 });
 
 export const toggleSettings = () => ({

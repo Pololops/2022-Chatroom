@@ -14,6 +14,7 @@ const regexForSubmitForm = /^(?!^ +$).+$/;
 export default function MessageForm() {
   // ? useSelector() : un hook redux pour lire une clé du store
   const newMessage = useSelector((state) => state.newMessage);
+  const { pseudo } = useSelector((state) => state.user);
 
   // ? UseDispatch() : un hook redux pour modifier une clé du store
   const dispatch = useDispatch();
@@ -33,7 +34,7 @@ export default function MessageForm() {
     <form className="chat-form" onSubmit={handleFormSubmit}>
       <Input
         className="chat-form__input"
-        placeholder="Saisissez votre message…"
+        placeholder={`Saisissez votre message${pseudo.length > 0 ? ` ${pseudo}` : ''}…`}
         value={newMessage}
         onChange={handleInputChange}
       />

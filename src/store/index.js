@@ -1,4 +1,4 @@
-import { createStore, applyMiddleware, compose } from '@reduxjs/toolkit';
+import { legacy_createStore as createStore, applyMiddleware, compose } from '@reduxjs/toolkit';
 import reducer from 'src/reducers';
 import logger from 'src/middlewares/logger';
 import auth from 'src/middlewares/auth';
@@ -12,6 +12,9 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 // * getState() : permet de récupérer le state
 // * dispatch() : permet de modifier le state
 // * subscribe() : permet de s'abonner aux changements de state
-const store = createStore(reducer, composeEnhancers(applyMiddleware(logger, auth)));
+const store = createStore(
+  reducer,
+  composeEnhancers(applyMiddleware(logger, auth)),
+);
 
 export default store;

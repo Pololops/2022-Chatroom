@@ -9,7 +9,7 @@ export default function Message({ author, content, userId }) {
           : 'messages__message'
       }
     >
-      <div className="messages__message__author">{author}</div>
+      <div className="messages__message__author">{(author !== '') ? author : 'Anonyme'}</div>
       <div className="messages__message__content">{content}</div>
     </div>
   );

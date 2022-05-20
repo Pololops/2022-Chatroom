@@ -17,8 +17,6 @@ const auth = (store) => (next) => (action) => {
         })
         .catch((error) => console.log(error));
 
-      //
-      // next(action);
       break;
     }
 
