@@ -1,10 +1,10 @@
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import './style.scss';
 
-export default function Settings() {
+export default function Settings({ isFormOpen, handleClick }) {
   return (
-    <div className="settings">
-      <button type="button" className="settings__button">
+    <div className={!isFormOpen ? 'settings' : 'settings settings--open'}>
+      <button type="button" className="settings__button" onClick={handleClick}>
         +
       </button>
 
@@ -12,6 +12,8 @@ export default function Settings() {
         <input
           type="text"
           id="email"
+          name="email"
+          autoComplete="on"
           className="settings__form__email"
           placeholder="Email"
         />
@@ -19,6 +21,8 @@ export default function Settings() {
         <input
           type="password"
           id="password"
+          name="password"
+          autoComplete="on"
           className="settings__form__password"
           placeholder="Mot de passe"
         />
@@ -31,10 +35,11 @@ export default function Settings() {
   );
 }
 
-// Settings.defaultProps = {
-// props: '',
-// };
+Settings.defaultProps = {
+  isFormOpen: false,
+};
 
-// Settings.propTypes = {
-// props: PropTypes.number|string|bool|func|array|object|node.isRequired,
-// };
+Settings.propTypes = {
+  isFormOpen: PropTypes.bool,
+  handleClick: PropTypes.func.isRequired,
+};

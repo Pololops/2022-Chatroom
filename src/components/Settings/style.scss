@@ -1,9 +1,14 @@
 .settings {
   position: fixed;
   top: 1rem;
-  right: 1rem;
+  right: -250px;
   display: flex;
   gap: 1.5rem;
+  transition: right 0.3s ease-out;
+
+  &--open {
+    right: 1rem;
+  }
 
   &__button {
     color: var(--primary-color);
@@ -74,5 +79,5 @@
 }
 
 .settings--open .settings__button {
-  transform: rotate(-45deg);
+  transform: rotate(-135deg);
 }
