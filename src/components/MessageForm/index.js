@@ -4,7 +4,7 @@ import './style.scss';
 import { useSelector, useDispatch } from 'react-redux';
 
 // * Import des actions configurées dans notre implémentation de Redux
-import { changeInputValue, submitForm } from '../../actions';
+import { changeInputValue, submitForm } from 'src/actions';
 
 import Input from './Input';
 import Button from './Button';

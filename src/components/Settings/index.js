@@ -1,12 +1,19 @@
-import PropTypes from 'prop-types';
 import './style.scss';
 
 import { useSelector, useDispatch } from 'react-redux';
-import { changeEmailInputValue, changePasswordInputValue } from '../../actions';
+import {
+  toggleSettings,
+  changeEmailInputValue,
+  changePasswordInputValue,
+} from 'src/actions';
 
-export default function Settings({ isConnectFormOpen, handleFormClick }) {
-  const { email, password } = useSelector((state) => state.connectForm);
+export default function Settings() {
+  const { isOpen, email, password } = useSelector((state) => state.settings);
   const dispatch = useDispatch();
+
+  const handleFormToggle = () => {
+    dispatch(toggleSettings());
+  };
 
   const handleEmailInputChange = (event) => {
     dispatch(changeEmailInputValue(event.target.value));
@@ -22,12 +29,12 @@ export default function Settings({ isConnectFormOpen, handleFormClick }) {
 
   return (
     <div
-      className={!isConnectFormOpen ? 'settings' : 'settings settings--open'}
+      className={!isOpen ? 'settings' : 'settings settings--open'}
     >
       <button
         type="button"
-        className="settings__button"
-        onClick={handleFormClick}
+        className="settings__toggler"
+        onClick={handleFormToggle}
       >
         +
       </button>
@@ -62,8 +69,3 @@ export default function Settings({ isConnectFormOpen, handleFormClick }) {
     </div>
   );
 }
-
-Settings.propTypes = {
-  isConnectFormOpen: PropTypes.bool.isRequired,
-  handleFormClick: PropTypes.func.isRequired,
-};

@@ -1,20 +1,26 @@
 .settings {
   position: fixed;
   top: 1rem;
-  right: calc(-250px - 0.5rem);
+  right: 3rem;
   display: flex;
   gap: 1.5rem;
-  transition: right 0.3s ease-out;
+  transform: translateX(100%);
+  transition: 0.3s ease-in-out;
 
   &--open {
     right: 1rem;
+    transform: translateX(0%);
+
+    .settings__toggler {
+      transform: rotate(-45deg);
+    }
   }
 
-  &__button {
+  &__toggler {
     color: var(--primary-color);
     border-radius: 50%;
     width: 2rem;
-    height: 2rem;
+    height: 2rem; 
     display: flex;
     justify-content: center;
     align-items: center;
@@ -74,8 +80,4 @@
       }
     }
   }
-}
-
-.settings--open .settings__button {
-  transform: rotate(-135deg);
 }

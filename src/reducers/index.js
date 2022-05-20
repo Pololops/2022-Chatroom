@@ -2,20 +2,20 @@
 import {
   CHANGE_MESSAGE_INPUT_VALUE,
   ADD_MESSAGE,
-  TOGGLE_CONNECT_FORM,
+  TOGGLE_SETTINGS,
   CHANGE_EMAIL_INPUT_VALUE,
   CHANGE_PASSWORD_INPUT_VALUE,
-} from '../actions';
+} from 'src/actions';
 
 // Import des selectors  défini dans .selectors/
-import { getHighestId } from '../selectors';
+import { getHighestId } from 'src/selectors';
 
 // L'état initial de l'App
 const initialState = {
   newMessage: '',
   messages: [],
-  isConnectFormOpen: false,
-  connectForm: {
+  settings: {
+    isOpen: false,
     email: '',
     password: '',
   },
@@ -51,18 +51,21 @@ const reducer = (state = initialState, action = {}) => {
       };
     }
 
-    case TOGGLE_CONNECT_FORM: {
+    case TOGGLE_SETTINGS: {
       return {
         ...state, // reprise de tout l'ancien state
-        isConnectFormOpen: action.payload,
+        settings: {
+          ...state.settings,
+          isOpen: !state.settings.isOpen,
+        },
       };
     }
 
     case CHANGE_EMAIL_INPUT_VALUE: {
       return {
         ...state, // reprise de tout l'ancien state
-        connectForm: {
-          ...state.connectForm,
+        settings: {
+          ...state.settings,
           email: action.payload,
         },
       };
@@ -71,8 +74,8 @@ const reducer = (state = initialState, action = {}) => {
     case CHANGE_PASSWORD_INPUT_VALUE: {
       return {
         ...state, // reprise de tout l'ancien state
-        connectForm: {
-          ...state.connectForm,
+        settings: {
+          ...state.settings,
           password: action.payload,
         },
       };

@@ -3,7 +3,7 @@
 // * ils permettent la gestion d'erreur et l'autocompletion dans le reducer : ./reducer/index.js
 export const CHANGE_MESSAGE_INPUT_VALUE = 'CHANGE_MESSAGE_INPUT_VALUE';
 export const ADD_MESSAGE = 'ADD_MESSAGE';
-export const TOGGLE_CONNECT_FORM = 'TOGGLE_CONNECT_FORM';
+export const TOGGLE_SETTINGS = 'TOGGLE_SETTINGS';
 export const CHANGE_EMAIL_INPUT_VALUE = 'CHANGE_EMAIL_INPUT_VALUE';
 export const CHANGE_PASSWORD_INPUT_VALUE = 'CHANGE_PASSWORD_INPUT_VALUE';
 
@@ -21,9 +21,8 @@ export const submitForm = (author, content) => ({
   content,
 });
 
-export const toggleConnectForm = (isConnectFormOpen) => ({
-  type: 'TOGGLE_CONNECT_FORM',
-  payload: isConnectFormOpen,
+export const toggleSettings = () => ({
+  type: 'TOGGLE_SETTINGS',
 });
 
 export const changeEmailInputValue = (value) => ({
