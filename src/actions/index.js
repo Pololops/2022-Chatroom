@@ -3,11 +3,13 @@
 // * ils permettent la gestion d'erreur et l'autocompletion dans le reducer : ./reducer/index.js
 export const CHANGE_MESSAGE_INPUT_VALUE = 'CHANGE_MESSAGE_INPUT_VALUE';
 export const ADD_MESSAGE = 'ADD_MESSAGE';
+export const SEND_MESSAGE = 'SEND_MESSAGE';
 export const TOGGLE_SETTINGS = 'TOGGLE_SETTINGS';
 export const CHANGE_SETTINGS_VALUE = 'CHANGE_SETTINGS_VALUE';
 export const CHANGE_PASSWORD_INPUT_VALUE = 'CHANGE_PASSWORD_INPUT_VALUE';
 export const LOGIN = 'LOGIN';
 export const SAVE_USER = 'SAVE_USER';
+export const WS_CONNECT = 'WS_CONNECT';
 
 // ? Les Action Creators :
 // * Des fonctions qui renvoie un objet avec une clé 'type' qui possède en valeur
@@ -17,8 +19,13 @@ export const changeInputValue = (value) => ({
   payload: value,
 });
 
-export const submitForm = () => ({
+export const addMessage = (message) => ({
   type: 'ADD_MESSAGE',
+  payload: message,
+});
+
+export const sendMessage = () => ({
+  type: 'SEND_MESSAGE',
 });
 
 export const toggleSettings = () => ({
@@ -38,4 +45,8 @@ export const login = () => ({
 export const saveUser = (pseudo) => ({
   type: 'SAVE_USER',
   payload: pseudo,
+});
+
+export const wsConnect = () => ({
+  type: 'WS_CONNECT',
 });

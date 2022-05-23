@@ -2,6 +2,7 @@ import { legacy_createStore as createStore, applyMiddleware, compose } from '@re
 import reducer from 'src/reducers';
 import logger from 'src/middlewares/logger';
 import auth from 'src/middlewares/auth';
+import websocket from 'src/middlewares/websocket';
 
 // ? Commande pour permettre à l'extension Chrome Redux DevTools de se connecter à notre app
 // * Si la fonction __REDUX_DEVTOOLS_EXTENSION_COMPOSE__ existe, alors on connecte le Redux Devtools
@@ -14,7 +15,7 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 // * subscribe() : permet de s'abonner aux changements de state
 const store = createStore(
   reducer,
-  composeEnhancers(applyMiddleware(logger, auth)),
+  composeEnhancers(applyMiddleware(logger, auth, websocket)),
 );
 
 export default store;

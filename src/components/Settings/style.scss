@@ -5,7 +5,7 @@
   display: flex;
   gap: 1.5rem;
   transform: translateX(100%);
-  transition-property: transform, right;
+  transition-property: transform, right, top;
   transition-duration: 0.3s;
   transition-timing-function: cubic-bezier(0.26, 0.08, 0.16, 1.41);
 
@@ -33,11 +33,16 @@
   }
 
   &--open {
+    top: 1rem;
     right: 1rem;
     transform: translateX(0%);
 
     .settings__toggler {
       transform: rotate(-45deg);
+    }
+
+    @media (max-width: 800px) { 
+      top: 3rem; 
     }
   }
 

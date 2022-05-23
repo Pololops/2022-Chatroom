@@ -7,9 +7,6 @@ import {
   SAVE_USER,
 } from 'src/actions';
 
-// Import des selectors  défini dans .selectors/
-import { getHighestId } from 'src/selectors';
-
 // L'état initial de l'App
 const initialState = {
   newMessage: '',
@@ -20,7 +17,7 @@ const initialState = {
     password: '',
   },
   user: {
-    pseudo: '',
+    pseudo: 'Anonyme',
   },
 };
 
@@ -42,18 +39,17 @@ const reducer = (state = initialState, action = {}) => {
     }
 
     case ADD_MESSAGE: {
-      const newMessage = {
-        id: getHighestId(state.messages) + 1,
-        author: state.user.pseudo,
-        content: state.newMessage,
-      };
+      const { id, author, content } = action.payload;
 
-      const newMessages = [...state.messages];
-      newMessages.push(newMessage);
+      const newMessage = {
+        id,
+        author,
+        content,
+      };
 
       return {
         ...state, // reprise de tout l'ancien state
-        messages: newMessages,
+        messages: [...state.messages, newMessage],
         newMessage: '',
       };
     }

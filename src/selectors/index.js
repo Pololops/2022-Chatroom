@@ -17,3 +17,13 @@ export function getHighestId(items) {
   const ids = items.map((item) => item.id);
   return Math.max(...ids);
 }
+
+/**
+ * function qui renvoie un selector qui détermine si l'auteur d'un message
+ * correspond à l'utilisateur connecté
+ * @param {string} author le pseudo de l'auteur d'un message
+ * @returns un selector
+ */
+export function isMessageMine(author) {
+  return (state) => author === state.user.pseudo;
+}

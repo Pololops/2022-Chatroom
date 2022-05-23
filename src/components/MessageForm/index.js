@@ -4,7 +4,7 @@ import './style.scss';
 import { useSelector, useDispatch } from 'react-redux';
 
 // * Import des actions configurées dans notre implémentation de Redux
-import { changeInputValue, submitForm } from 'src/actions';
+import { changeInputValue, sendMessage } from 'src/actions';
 
 import Input from '../Input';
 import Button from './Button';
@@ -26,7 +26,7 @@ export default function MessageForm() {
   const handleFormSubmit = (event) => {
     event.preventDefault();
     if (newMessage.match(regexForSubmitForm)) {
-      dispatch(submitForm());
+      dispatch(sendMessage());
     }
   };
 
