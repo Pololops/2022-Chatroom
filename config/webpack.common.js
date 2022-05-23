@@ -79,8 +79,8 @@ module.exports = {
       },
       // Audio MP3
       {
-        test: /\.(mp3)$/,
-         use: [
+        test: /\.(mp3|m4a)$/,
+        use: [
           {
             loader: "file-loader",
             options: { outputPath: "sound/" },
