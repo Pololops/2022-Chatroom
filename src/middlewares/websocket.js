@@ -6,6 +6,7 @@ let socket;
 const websocket = (store) => (next) => (action) => {
   switch (action.type) {
     case WS_CONNECT: {
+      // ? Connexion au server configuré avec websocket
       socket = window.io('http://localhost:3001');
 
       socket.on('server_message', (message) => {
