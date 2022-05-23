@@ -1,9 +1,12 @@
 import './style.scss';
+import dingSound from 'src/assets/sounds/message-pop-alert.mp3';
 
 // ? Le hook useSelector de Redux permet de lire les propriétés du state
 import { useSelector } from 'react-redux';
 
 import { useRef, useEffect } from 'react';
+
+import { useSound } from 'src/hooks';
 
 import Message from './Message';
 
@@ -21,6 +24,8 @@ export default function Messages() {
     // messagesRef.current.scroll(0, scrollRef.current.scrollHeight); // ancienne méthode
     scrollRef.current.scrollIntoView({ behavior: 'smooth' }); // nouvelle méthode
   }, [messages]);
+
+  useSound(dingSound, messages);
 
   return (
     <div className="messages" ref={messagesRef}>
